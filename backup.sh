@@ -1,12 +1,14 @@
 #!/bin/bash
 
-backup_dir="/path/to/backup"
-source_dir="/path/to/source"
-timestamp=$(date +"%Y%m%d%H%M%S")
-backup_file="$backup_dir/backup_$timestamp.tar.gz"
+<<note
+This Script takes backup of any destinationgiven under argument
+note
 
-# Create backup directory if it does not exist
-mkdir -p "$backup_dir"
+backup_dir="${timestamp}_backup.zip"
 
-# Perform the backup
-tar -czf "$backup_file" -C "$source_dir" .
+timestamp=$(date '+%Y%m%d_%H%M%S')
+
+zip -r $backup_dir $1 
+
+echo"Backup Created Successfully"
+
